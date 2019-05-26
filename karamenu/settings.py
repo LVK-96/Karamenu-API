@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'apps.api',
     'apps.menu_parser',
     'rest_framework',
-    'djmoney',
 ]
 
 MIDDLEWARE = [
@@ -95,19 +94,19 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.'
-                    'UserAttributeSimilarityValidator',
+                'UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.'
-                    'MinimumLengthValidator',
+                'MinimumLengthValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.'
-                   'CommonPasswordValidator',
+                'CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.'
-                    'NumericPasswordValidator',
+                'NumericPasswordValidator',
     },
 ]
 
@@ -132,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': \
-        'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }

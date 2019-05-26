@@ -1,11 +1,23 @@
+"""Views for RESTful API."""
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from apps.api.models import Restaurant, Menu
 from apps.api.serializers import RestaurantSerializer, MenuSerializer
-from rest_framework import viewsets
 
-class RestaurantViewSet(viewsets.ModelViewSet):
-    queryset = Restaurant.objects.all()
-    serializer_class = RestaurantSerializer
 
-class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.all()
-    serializer_class = MenuSerializer
+@api_view(['GET'])
+def restaurants(request, format=None):
+    """Retrieve restaurants."""
+    if request.method == 'GET':
+        restaurants = Restaurant.objects.all()
+        serializer = RestaurantSerializer(restaurants)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def menus(request, format=None):
+    """Retrieve menus."""
+    if request.method == 'GET':
+        menus = Menu.objects.all()
+        serializer = MenuSerializer(menus, many=True)
+        return Response(serializer.data)
