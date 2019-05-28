@@ -18,5 +18,11 @@ class Menu(models.Model):
 
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     date = models.DateField(blank=True)
-    url = models.URLField(blank=True, default='')
     courses = JSONField()
+
+    @classmethod
+    def create(cls, restaurant, date, courses):
+        """Create new menu object."""
+        menu = cls(restaurant=Restaurant.objects.get(name=restaurant),
+                   date=date, courses=courses)
+        return menu
