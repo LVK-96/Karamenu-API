@@ -2,7 +2,7 @@
 import requests
 import json
 from datetime import date
-from apps.api import Menu
+from apps.api.models import Menu
 
 
 def get_json(day):
@@ -24,4 +24,6 @@ def create_menu():
     menu = json.loads(get_json(day))
     restaurant = menu["meta"]["ref_title"]
     courses = menu["courses"]
-    Menu.create(restaurant, day, courses)
+    new_menu = Menu.create(restaurant, day, courses)
+    new_menu.save()
+    return new_menu

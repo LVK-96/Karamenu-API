@@ -1,23 +1,26 @@
 """Views for RESTful API."""
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from apps.api.models import Restaurant, Menu
-from apps.api.serializers import RestaurantSerializer, MenuSerializer
+from .models import Restaurant  # TODO: Menu will be needed here later
+from .serializers import RestaurantSerializer, MenuSerializer
+from apps.menu_parser import sodexo
 
 
 @api_view(['GET'])
-def restaurants(request, format=None):
+def RestaurantView(request, format=None):
     """Retrieve restaurants."""
     if request.method == 'GET':
-        restaurants = Restaurant.objects.all()
-        serializer = RestaurantSerializer(restaurants)
+        restaurant = Restaurant.objects.get(pk=1)
+        serializer = RestaurantSerializer(restaurant,
+                                          context={'request': request})
         return Response(serializer.data)
 
 
 @api_view(['GET'])
-def menus(request, format=None):
+def MenuView(request, format=None):
     """Retrieve menus."""
+    
     if request.method == 'GET':
-        menus = Menu.objects.all()
-        serializer = MenuSerializer(menus, many=True)
+        menu = sodexo.create_menu()
+        serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)

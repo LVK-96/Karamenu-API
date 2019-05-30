@@ -12,6 +12,13 @@ class Restaurant(models.Model):
     closes = models.TimeField(blank=True)
     url = models.URLField(blank=True, default='')
 
+    @classmethod
+    def create(cls, name, address, opens, closes, url):
+        """Create Restaurant object."""
+        restaurant = cls(name=name, address=address,
+                         opens=opens, closes=closes, url=url)
+        return restaurant
+
 
 class Menu(models.Model):
     """Model for menu."""
@@ -22,7 +29,7 @@ class Menu(models.Model):
 
     @classmethod
     def create(cls, restaurant, date, courses):
-        """Create new menu object."""
+        """Create Menu object."""
         menu = cls(restaurant=Restaurant.objects.get(name=restaurant),
                    date=date, courses=courses)
         return menu
