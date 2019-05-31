@@ -5,7 +5,7 @@ from apps.api import views
 
 urlpatterns = [
     path('restaurant/<int:restaurant>', views.RestaurantView),
-    path('restaurant/<int:restaurant>/menu/<int:day>/<int:month>/<int:year>',
+    path('restaurant/<int:restaurant>/<int:day>/<int:month>/<int:year>',
          views.MenuView),
 ]
 

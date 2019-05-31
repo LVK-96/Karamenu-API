@@ -25,11 +25,10 @@ def get_json(restaurant_id, day):
         return None
 
 
-def create_menu(restaurant_id, day, month, year):
+def create_menu(restaurant, day, month, year):
     """Create menu object."""
     d = date(year, month, day)
-    menu = json.loads(get_json(restaurant_id, d))
-    restaurant = menu["meta"]["ref_title"]
+    menu = json.loads(get_json(restaurant.id, d))
     courses = menu["courses"]
     new_menu = Menu.create(restaurant, d, courses)
     new_menu.save()

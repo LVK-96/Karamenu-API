@@ -30,6 +30,5 @@ class Menu(models.Model):
     @classmethod
     def create(cls, restaurant, date, courses):
         """Create Menu object."""
-        menu = cls(restaurant=Restaurant.objects.get(name=restaurant),
-                   date=date, courses=courses)
+        menu = cls(restaurant=restaurant, date=date, courses=courses)
         return menu
