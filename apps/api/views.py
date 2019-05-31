@@ -7,20 +7,19 @@ from apps.menu_parser import sodexo
 
 
 @api_view(['GET'])
-def RestaurantView(request, format=None):
+def RestaurantView(request, restaurant, format=None):
     """Retrieve restaurants."""
     if request.method == 'GET':
-        restaurant = Restaurant.objects.get(pk=1)
+        restaurant = Restaurant.objects.get(pk=restaurant)
         serializer = RestaurantSerializer(restaurant,
                                           context={'request': request})
         return Response(serializer.data)
 
 
 @api_view(['GET'])
-def MenuView(request, format=None):
+def MenuView(request, restaurant, day, month, year, format=None):
     """Retrieve menus."""
-    
     if request.method == 'GET':
-        menu = sodexo.create_menu()
+        menu = sodexo.create_menu(restaurant, day, month, year)
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)
