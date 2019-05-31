@@ -1,4 +1,5 @@
 """Views for RESTful API."""
+from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.response import Response
 from rest_framework import status
@@ -33,6 +34,13 @@ def MenuView(request, restaurant, day, month, year, format=None):
             content = {'Invalid restaurant id': restaurant}
             return Response(content, status=status.HTTP_404_NOT_FOUND)
 
-        menu = sodexo.create_menu(r, day, month, year)
+        try:
+            d = date(year, month, day)
+        except ValueError:
+            content = {'Invalid date': "{d}.{m}.{y}".format(d=day,
+                                                            m=month, y=year)}
+            return Response(content, status=status.HTTP_404_NOT_FOUND)
+
+        menu = sodexo.create_menu(r, d)
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)
