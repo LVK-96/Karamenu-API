@@ -4,9 +4,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import Restaurant  # TODO: Menu will be needed here later
+from .models import Restaurant, Menu
 from .serializers import RestaurantSerializer, MenuSerializer
-from apps.menu_parser import sodexo
+from apps.menu_parser.create_menu import create_menu
 
 
 @api_view(['GET'])
@@ -41,6 +41,10 @@ def MenuView(request, restaurant, day, month, year, format=None):
                                                             m=month, y=year)}
             return Response(content, status=status.HTTP_404_NOT_FOUND)
 
-        menu = sodexo.create_menu(r, d)
+        try:
+            menu = Menu.objects.get(restaurant=r, date=d)
+        except ObjectDoesNotExist:
+            menu = create_menu(r, d)
+
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)

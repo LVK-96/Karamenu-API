@@ -18,12 +18,3 @@ def get_json(restaurant_id, day):
         return resp.text
     except ValueError:
         return None
-
-
-def create_menu(restaurant, d):
-    """Create menu object."""
-    menu = json.loads(get_json(restaurant.id, d))
-    courses = menu["courses"]
-    new_menu = Menu.create(restaurant, d, courses)
-    new_menu.save()
-    return new_menu

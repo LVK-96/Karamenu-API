@@ -4,6 +4,7 @@
         "pk": 1,
         "fields": {
            "name": "Midpoint",
+           "company": "SDX",
            "address": "Karakaari 7",
            "url": "https://www.sodexo.fi/midpoint",
            "opens": "10:30",
@@ -15,10 +16,23 @@
         "pk": 2,
         "fields": {
            "name": "Nokia One Espoo",
+           "company": "SDX",
            "address": "Karaportti 3",
            "url": "https://www.sodexo.fi/nokiaone",
            "opens": "10:30",
            "closes": "13:45"
+        }
+    },
+    {
+        "model": "api.restaurant",
+        "pk": 3,
+        "fields": {
+           "name": "Dreams Cafe",
+           "company": "FZR",
+           "address": "Karaportti 4",
+           "url": "https://www.fazerfoodco.fi/ravintolat/Ravintolat-kaupungeittain/espoo/dreams-cafe/",
+           "opens": "08:00",
+           "closes": "15:00"
         }
     }
 ]
