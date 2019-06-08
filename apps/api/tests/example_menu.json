@@ -1,0 +1,76 @@
+{
+    "restaurant": {
+        "name": "Midpoint",
+        "company": "Sodexo",
+        "address": "Karakaari 7",
+        "opens": "10:30:00",
+        "closes": "13:45:00",
+        "url": "https://www.sodexo.fi/midpoint"
+    },
+    "date": "2019-05-10",
+    "courses": [
+        {
+            "category": "FROM THE KITCHEN",
+            "name_fi": "Soijamarinoitua seitä, linssijogurttia, raparperi-mangosalaatti ja perunaa",
+            "name_en": "Soya marinated saithe, lentil yoghurt, rhubarb-mango salad and potatoes",
+            "desc_fi": "",
+            "desc_en": "",
+            "tags": "G, L",
+            "price": "6,60 / 8,90"
+        },
+        {
+            "category": "FROM THE KITCHEN",
+            "name_fi": "Paneroitua broileria, choronkastike ja riisi",
+            "name_en": "Breaded chicken, choron sauce and rice",
+            "desc_fi": "",
+            "desc_en": "",
+            "tags": "L",
+            "price": "7,30 / 9,50"
+        },
+        {
+            "category": "FROM THE FAVORITIES",
+            "name_fi": "Päivän pizza: Mexicana tai Margherita ",
+            "name_en": "Pizza of the day: Mexicana or Margherita ",
+            "desc_fi": "",
+            "desc_en": "",
+            "tags": "L",
+            "price": "8,10 / 9,70"
+        },
+        {
+            "category": "FROM THE HEART",
+            "name_fi": "Tomaattinen tofu-papupata ja kurkkuraita",
+            "name_en": "Tofu and pean stew with tomato and cucumber raita",
+            "desc_fi": "sis valkosipulia",
+            "desc_en": "incl garlic",
+            "tags": "G, L",
+            "price": "6,60 / 8,90"
+        },
+        {
+            "category": "FROM THE FIELD",
+            "name_fi": "Runsas salaattipöytä sekä päivän napas ja keitto",
+            "name_en": "Salad buffet with napas selection of the day and soup",
+            "desc_fi": "tandoribroiler,paahtopaisti,brie-juusto,tonnikala,savusärki\r\nvegaani:soijapyörykät",
+            "desc_en": "tandor chciken,roast beef,brie,tuna, smoked raoch,\r\nvegan: soya balls",
+            "tags": "G, L",
+            "price": "7,20 / 9,20"
+        },
+        {
+            "category": "FROM THE FIELD",
+            "name_fi": "Punajuurisosekeittoa",
+            "name_en": "Beetroot soup",
+            "desc_fi": "",
+            "desc_en": "",
+            "tags": "G, L",
+            "price": "5,10 / 6,10"
+        },
+        {
+            "category": "DESSERT",
+            "name_fi": "Mustikkakiisseli tai karamellisoidut raparperit ja vaniljavaahto",
+            "name_en": "Blueberry fool or caramelized rhubarb and vanilla sauce",
+            "desc_fi": "",
+            "desc_en": "",
+            "tags": "G, L",
+            "price": "0,90 / 0,90"
+        }
+    ]
+}

@@ -6,16 +6,7 @@ from django.contrib.postgres.fields import JSONField
 class Restaurant(models.Model):
     """Model for restaurant."""
 
-    NA = 'NA'
-    SODEXO = 'SDX'
-    FAZER = 'FZR'
-    COMPANY_CHOICES = [
-            (NA, 'Not available'),
-            (SODEXO, 'Sodexo'),
-            (FAZER, 'Fazer')
-    ]
-    company = models.CharField(max_length=3, choices=COMPANY_CHOICES,
-                               default=NA)
+    company = models.CharField(max_length=100, default='')
     name = models.CharField(max_length=100, blank=True, default='')
     address = models.CharField(max_length=100, blank=True, default='')
     opens = models.TimeField(blank=True)
