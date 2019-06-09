@@ -5,7 +5,7 @@ from . import sodexo
 from .serializers import CourseSerializer
 
 
-def create_menu(restaurant, d):
+def parse_menu(restaurant, d):
     """Create new menu object."""
     # TODO: support fazer.
     menu = json.loads(sodexo.get_json(restaurant.id, d))

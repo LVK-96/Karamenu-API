@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import Restaurant, Menu
 from .serializers import RestaurantSerializer, MenuSerializer
-from apps.menu_parser.create_menu import create_menu
+from apps.menu_parser.parse_menu import parse_menu
 
 
 @api_view(['GET'])
@@ -44,7 +44,7 @@ def MenuView(request, restaurant, day, month, year, format=None):
         try:
             menu = Menu.objects.get(restaurant=r, date=d)
         except ObjectDoesNotExist:
-            menu = create_menu(r, d)
+            menu = parse_menu(r, d)
 
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)
