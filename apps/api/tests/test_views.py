@@ -1,4 +1,4 @@
-"""Test HTTP resonse codes."""
+"""Test views by checking the HTTP resonse codes."""
 
 from django.test import TestCase
 from django.core.management import call_command

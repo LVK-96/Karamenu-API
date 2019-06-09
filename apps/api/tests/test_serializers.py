@@ -13,8 +13,8 @@ class RestaurantSerializerTests(TestCase):
         call_command('loaddata', 'apps/api/fixtures/restaurants.json',
                      verbosity=0)
         self.restaurant = Restaurant.objects.get(pk=1)
-        self.serializer = RestaurantSerializer(instance=self.restaurant)
-        self.serializer_data = self.serializer.data
+        serializer = RestaurantSerializer(instance=self.restaurant)
+        self.serializer_data = serializer.data
 
     def test_contains_correct_fields(self):
         self.assertCountEqual(self.serializer_data.keys(),

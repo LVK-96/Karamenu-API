@@ -10,7 +10,7 @@ def create_menu(restaurant, d):
     # TODO: support fazer.
     menu = json.loads(sodexo.get_json(restaurant.id, d))
     courses = sodexo.parse_courses(menu["courses"])
-    courses_json = CourseSerializer(courses, many=True).data
-    new_menu = Menu.create(restaurant, d, courses_json)
+    courses = CourseSerializer(courses, many=True).data
+    new_menu = Menu.create(restaurant, d, courses)
     new_menu.save()
     return new_menu
