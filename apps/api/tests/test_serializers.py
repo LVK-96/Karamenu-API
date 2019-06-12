@@ -48,7 +48,7 @@ class MenuSerializerTests(TestCase):
     """Test Menu serializer."""
 
     def setUp(self):
-        call_command('loaddata', 'apps/api/fixtures/test_data.json',
+        call_command('loaddata', 'apps/api/tests/test_data.json',
                      verbosity=0)
         self.menu = Menu.objects.get(pk=1)
         self.serializer = MenuSerializer(instance=self.menu)

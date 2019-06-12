@@ -15,7 +15,7 @@ def get_json(restaurant_id, day):
     try:
         resp.raise_for_status()
         return resp.text
-    except ValueError:
+    except ConnectionError:
         return None
 
 

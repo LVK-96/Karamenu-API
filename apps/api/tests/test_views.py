@@ -1,7 +1,9 @@
 """Test views by checking the HTTP resonse codes."""
-
+from unittest.mock import patch
+from datetime import date
 from django.test import TestCase
 from django.core.management import call_command
+from apps.api.models import Restaurant, Menu
 
 
 class RestaurantViewTests(TestCase):
@@ -51,8 +53,12 @@ class MenuViewTests(TestCase):
     def setUp(self):
         call_command('loaddata', 'apps/api/fixtures/restaurants.json',
                      verbosity=0)
-
-    def test_get_valid_menu_response(self):
+    
+    @patch('apps.api.views.parse_menu')
+    def test_get_valid_menu_response(self, mock_parse_menu):
+        restaurant = Restaurant.objects.get(pk=1)
+        mock_menu = Menu.create(restaurant, date(2019, 5, 10), '')
+        mock_parse_menu.return_value = mock_menu  # Mock parse_menu()
         response = self.client.get('/restaurant/1/5/6/2019')
         self.assertEqual(response.status_code, 200)
 
@@ -63,7 +69,7 @@ class MenuViewTests(TestCase):
     def test_get_invalid_date_menu_response(self):
         response = self.client.get('/restaurant/1/100/1/2019')
         self.assertEqual(response.status_code, 404)
-    
+
     def test_options_menu_response(self):
         response = self.client.options('/restaurant/1/5/6/2019')
         self.assertEqual(response.status_code, 200)
