@@ -1,5 +1,5 @@
-
 from unittest.mock import patch
+from requests.exceptions import HTTPError
 from datetime import date
 from django.core.management import call_command
 from django.test import TestCase
@@ -22,6 +22,14 @@ class TestSodexo(TestCase):
         mock_get.return_value.text = self.mock_response
         menu = get_json(self.restaurant, self.day)
         self.assertEqual(menu, self.mock_response)
+    
+    @patch('apps.menu_parser.sodexo.requests.get')
+    def test_get_json_api_offline(self, mock_get):
+        mock_get.return_value.status_code = 404
+        mock_get.return_value.ok = False
+        mock_get.return_value.raise_for_status.side_effect = HTTPError()
+        menu = get_json(self.restaurant, self.day)
+        self.assertEqual(menu, "{}")
     
     def test_parse_courses(self):
         test_dict1 = {

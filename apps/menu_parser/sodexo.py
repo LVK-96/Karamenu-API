@@ -11,12 +11,12 @@ def get_json(restaurant_id, day):
     url = ('https://www.sodexo.fi/ruokalistat/output'
            '/daily_json/{r}/{y}/{m}/{d}/fi')
     url = url.format(r=sodexo_r, y=day.year, m=day.month, d=day.day)
-    resp = requests.get(url)
     try:
+        resp = requests.get(url)
         resp.raise_for_status()
         return resp.text
-    except ConnectionError:
-        return None
+    except requests.exceptions.HTTPError:
+        return "{}"
 
 
 def parse_courses(courses):
