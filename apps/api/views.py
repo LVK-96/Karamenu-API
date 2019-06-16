@@ -45,6 +45,7 @@ def MenuView(request, restaurant, day, month, year, format=None):
             menu = Menu.objects.get(restaurant=r, date=d)
         except ObjectDoesNotExist:
             menu = parse_menu(r, d)
+            menu.save()
 
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)

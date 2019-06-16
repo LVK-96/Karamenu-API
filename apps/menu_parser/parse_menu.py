@@ -13,7 +13,6 @@ def parse_menu(restaurant, d):
         courses = parse_courses(menu["courses"])
         courses = CourseSerializer(courses, many=True).data
         new_menu = Menu.create(restaurant, d, courses)
-        new_menu.save()
     except KeyError:
         new_menu = None
     

@@ -34,3 +34,8 @@ class Menu(models.Model):
         """Create Menu object."""
         menu = cls(restaurant=restaurant, date=date, courses=courses)
         return menu
+
+    def __eq__(self, other):
+        """For parse_menu"""
+        return (self.restaurant == other.restaurant and self.date == other.date
+                and self.courses == other.courses)
