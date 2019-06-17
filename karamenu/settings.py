@@ -78,11 +78,10 @@ WSGI_APPLICATION = 'karamenu.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'karamenu',
-        'USER': 'dev',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
