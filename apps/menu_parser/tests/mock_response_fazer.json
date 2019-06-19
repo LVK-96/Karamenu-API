@@ -1,0 +1,138 @@
+{
+    "RestaurantName": "Dreams Cafe",
+    "RestaurantUrl": "https://www.fazerfoodco.fi/ravintolat/Ravintolat-kaupungeittain/espoo/dreams-cafe/",
+    "PriceHeader": null,
+    "Footer": "Hyvää ruokahalua!",
+    "MenusForDays": [
+      {
+        "Date": "2019-06-19T00:00:00+02:00",
+        "LunchTime": "11.00 - 13.30",
+        "SetMenus": [
+          {
+            "SortOrder": 0,
+            "Name": "Lounas",
+            "Price": null,
+            "Components": [
+              "Broileria cashewpähkinä-jogurttikastikkeessa (A ,G ,L ,VS)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvisruoka",
+            "Price": null,
+            "Components": [
+              "Kasviskiusausta (A ,G ,L)",
+              "Kasvis-herkkusienikiusausta (* ,A ,G ,L ,VS)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvisruoka",
+            "Price": null,
+            "Components": [
+              "Kvinoalla ja mungpavuilla täytettyjä paprikoita (* ,G ,L ,M ,Veg ,VS)",
+              "Lime-yrttimajoneesia (A ,G ,L ,M ,Veg)",
+              "Höyrytettyä riisiä (G ,L ,M ,Veg)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvislisäke",
+            "Price": null,
+            "Components": [
+              "Parsakaalia (G ,L ,M ,Veg)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasviskeitto",
+            "Price": null,
+            "Components": [
+              "Kaali-kasviskeittoa ja papu-kikherneseosta (A ,G ,L ,M ,Veg ,VS)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Päivän piriste",
+            "Price": null,
+            "Components": [
+              "Mustikka-mansikkajuoma (G ,L ,M ,Veg)"
+            ]
+          }
+        ]
+      },
+      {
+        "Date": "2019-06-20T00:00:00+02:00",
+        "LunchTime": "11.00 - 13.30",
+        "SetMenus": [
+          {
+            "SortOrder": 0,
+            "Name": "Lounas",
+            "Price": null,
+            "Components": [
+              "Moussakaa (A ,VS)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvisruoka",
+            "Price": null,
+            "Components": [
+              "Tomaatti-vuohenjuustokastiketta (* ,A ,G ,VL ,VS)",
+              "Luomutäysjyväkierrepastaa (* ,A ,L ,M ,Veg)",
+              "Parmesanjuustoa (A ,G ,L)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvisruoka",
+            "Price": null,
+            "Components": [
+              "Kikhernepihvi (A ,L ,M ,VS)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasvislisäke",
+            "Price": null,
+            "Components": [
+              "Paahdettua maissintähkää (G ,L ,M ,Veg)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Kasviskeitto",
+            "Price": null,
+            "Components": [
+              "Rucolaa (G ,L ,M ,Veg)",
+              "Palsternakka-inkivääri-mantelisosekeittoa  (A ,G ,L ,M ,Veg)"
+            ]
+          },
+          {
+            "SortOrder": 0,
+            "Name": "Päivän piriste",
+            "Price": null,
+            "Components": [
+              "Ananas-sellerishotti (A ,G ,L ,M ,Veg)"
+            ]
+          }
+        ]
+      },
+      {
+        "Date": "2019-06-21T00:00:00+02:00",
+        "LunchTime": "11.00 - 13.30",
+        "SetMenus": []
+      },
+      {
+        "Date": "2019-06-22T00:00:00+02:00",
+        "LunchTime": null,
+        "SetMenus": []
+      },
+      {
+        "Date": "2019-06-23T00:00:00+02:00",
+        "LunchTime": null,
+        "SetMenus": []
+      }
+    ],
+    "ErrorText": null
+  }
