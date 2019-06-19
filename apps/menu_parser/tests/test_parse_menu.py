@@ -16,7 +16,7 @@ class ParseMenuTest(TestCase):
         self.restaurant = Restaurant.objects.get(pk=1)
         self.day = date(2019, 5, 10)
         self.mock_json1 = open('apps/menu_parser/tests/'
-                               'mock_api_response.json', 'r').read()
+                               'mock_response_sodexo.json', 'r').read()
         self.mock_json2 = "{}"
     
     @patch('apps.menu_parser.parse_menu.get_json')

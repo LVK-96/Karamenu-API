@@ -11,10 +11,10 @@ class TestSodexo(TestCase):
     def setUp(self):
         call_command('loaddata', 'apps/api/fixtures/restaurants.json',
                      verbosity=0)
-        self.restaurant = 1
+        self.restaurant = "Midpoint"
         self.day = date(2019, 5, 10)
         self.mock_response = open('apps/menu_parser/tests/'
-                                  'mock_api_response.json', 'r').read()
+                                  'mock_response_sodexo.json', 'r').read()
     
     @patch('apps.menu_parser.sodexo.requests.get')
     def test_get_json(self, mock_get):

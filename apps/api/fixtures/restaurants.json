@@ -22,5 +22,17 @@
            "opens": "10:30",
            "closes": "13:45"
         }
+    },
+    {
+        "model": "api.restaurant",
+        "pk": 3,
+        "fields": {
+           "name": "Dreams Cafe",
+           "company": "Fazer",
+           "address": "Karaportti 4",
+           "url": "https://www.fazerfoodco.fi/ravintolat/Ravintolat-kaupungeittain/espoo/dreams-cafe/",
+           "opens": "11:00",
+           "closes": "13:30"
+        }
     }
 ]

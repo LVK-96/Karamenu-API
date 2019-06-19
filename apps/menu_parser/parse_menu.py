@@ -8,12 +8,11 @@ from .serializers import CourseSerializer
 def parse_menu(restaurant, d):
     """Create new menu object."""
     # TODO: support fazer.
-    menu = json.loads(get_json(restaurant.id, d))
+    menu = json.loads(get_json(restaurant.name, d))
     try:
         courses = parse_courses(menu["courses"])
         courses = CourseSerializer(courses, many=True).data
         new_menu = Menu.create(restaurant, d, courses)
     except KeyError:
         new_menu = None
-    
     return new_menu
