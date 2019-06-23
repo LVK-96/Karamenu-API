@@ -18,13 +18,14 @@ class ParseMenuTest(TestCase):
         self.mock_json1 = open('apps/menu_parser/tests/'
                                'mock_response_sodexo.json', 'r').read()
         self.mock_json2 = "{}"
-    
-    @patch('apps.menu_parser.parse_menu.get_json')
+
+    @patch('apps.menu_parser.parse_menu.sodexo.get_json')
     def test_no_response_from_api(self, mock_get_json):
         mock_get_json.return_value = self.mock_json2
-        self.assertEqual(parse_menu(self.restaurant, self.day), None)
-    
-    @patch('apps.menu_parser.parse_menu.get_json')
+        correct_menu = Menu.create(self.restaurant, self.day, "{}")
+        self.assertEqual(parse_menu(self.restaurant, self.day), correct_menu)
+
+    @patch('apps.menu_parser.parse_menu.sodexo.get_json')
     def test_correct_response_from_api(self, mock_get_json):
         mock_courses = parse_courses(json.loads(self.mock_json1)["courses"])
         mock_courses = CourseSerializer(mock_courses, many=True).data

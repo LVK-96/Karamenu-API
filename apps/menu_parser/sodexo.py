@@ -1,13 +1,13 @@
 """Get menus from Sodexo api."""
 import requests
-from .api_lookup import lookup_sodexo
+import apps.menu_parser.api_lookup as api_lookup
 from .course import Course
 
 
 def get_json(restaurant_name, day):
     """Get menu as json."""
     # restaurant_id is already validated at view.
-    sodexo_r = lookup_sodexo[restaurant_name]
+    sodexo_r = api_lookup.sodexo[restaurant_name]
     url = ('https://www.sodexo.fi/ruokalistat/output'
            '/daily_json/{r}/{y}/{m}/{d}/fi')
     url = url.format(r=sodexo_r, y=day.year, m=day.month, d=day.day)

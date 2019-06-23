@@ -8,7 +8,11 @@
 # Dreams Cafe: 3202
 
 
-lookup_sodexo = {"Midpoint": 27770,
-                 "Nokia One Espoo": 35956}
+sodexo = {
+    "Midpoint": 27770,
+    "Nokia One Espoo": 35956
+}
 
-lookup_fazer = {"Dreams Cafe": 3202}
+fazer = {
+    "Dreams Cafe": 3202
+}

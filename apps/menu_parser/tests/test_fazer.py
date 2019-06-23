@@ -12,7 +12,6 @@ class TestFazer(TestCase):
         call_command('loaddata', 'apps/api/fixtures/restaurants.json',
                      verbosity=0)
         self.restaurant = "Dreams Cafe"
-        self.day = date(2019, 6, 19)
         self.mock_response = open('apps/menu_parser/tests/'
                                   'mock_response_fazer.json', 'r').read()
     
@@ -20,7 +19,7 @@ class TestFazer(TestCase):
     def test_get_json(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.text = self.mock_response
-        menu = get_json(self.restaurant, self.day)
+        menu = get_json(self.restaurant)
         self.assertEqual(menu, self.mock_response)
     
     @patch('apps.menu_parser.sodexo.requests.get')
@@ -28,7 +27,7 @@ class TestFazer(TestCase):
         mock_get.return_value.status_code = 404
         mock_get.return_value.ok = False
         mock_get.return_value.raise_for_status.side_effect = HTTPError()
-        menu = get_json(self.restaurant, self.day)
+        menu = get_json(self.restaurant)
         self.assertEqual(menu, "{}")
     
     def test_parse_courses(self):
@@ -53,14 +52,15 @@ class TestFazer(TestCase):
         # TODO: CONTINUE FROM HERE
         test_list = [test_dict1, test_dict2]
 
-        correct_course1 = Course(test_dict1['category'], test_dict1['title_fi'],
-                                 test_dict1['title_en'], test_dict1['desc_fi'],
-                                 test_dict1['desc_en'],
-                                 test_dict1['properties'], test_dict1['price'])
+        correct_course1 = Course('Lounas',
+                                 'Broileria cashewpähkinä-jogurttikastikkeessa',
+                                 '', '', '', 'A ,G ,L ,VS', '')
 
-        correct_course2 = Course(test_dict2['category'], test_dict2['title_fi'],
-                                 test_dict2['title_en'], test_dict2['desc_fi'],
-                                 test_dict2['desc_en'],
-                                 test_dict2['properties'], test_dict2['price'])
-        correct_courses = [correct_course1, correct_course2]
+        correct_course2 = Course('Kasvisruoka', 'Kasviskiusausta',
+                                 '', '', '', 'A ,G ,L', '')
+
+        correct_course3 = Course('Kasvisruoka', 'Kasvis-herkkusienikiusausta',
+                                 '', '', '', '* ,A ,G ,L ,VS', '')
+
+        correct_courses = [correct_course1, correct_course2, correct_course3]
         self.assertEqual(parse_courses(test_list), correct_courses)
