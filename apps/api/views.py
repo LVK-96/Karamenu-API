@@ -57,12 +57,5 @@ def MenuView(request, restaurant, day, month, year, format=None):
             return Response(content, status=status.HTTP_404_NOT_FOUND)
 
         menu = parse_menu(r, d)
-        try:
-            old_menu = Menu.objects.get(restaurant=r, date=d)
-            if menu.courses != old_menu.courses and menu.courses != "{}":
-                menu.save()
-        except ObjectDoesNotExist:
-            menu.save()
-
         serializer = MenuSerializer(menu, context={'request': request})
         return Response(serializer.data)
