@@ -17,12 +17,14 @@ def parse_menu(restaurant, d):
         except KeyError:
             return Menu.create(restaurant, d, "{}")
     elif restaurant.name in api_lookup.fazer:
-        if d < date.today() or (d - date.today()).days > 7:
+        delta = (d - date.today()).days
+        if d < date.today() or delta > 7:
             # Fazer api only has the menus for the current week
             return Menu.create(restaurant, d, "{}")
         menu = json.loads(fazer.get_json(restaurant.name))
         try:
-            courses = fazer.parse_courses(menu["courses"])
+            courses = fazer.parse_courses(
+                    menu["MenusForDays"][delta]["SetMenus"])
         except KeyError:
             return Menu.create(restaurant, d, "{}")
 

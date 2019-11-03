@@ -27,27 +27,27 @@ def parse_courses(courses):
             name_fi = course["title_fi"]
         except KeyError:
             name_fi = ""
-        
+
         try:
             name_en = course["title_en"]
         except KeyError:
             name_en = ""
-        
+
         try:
             category = course["category"]
         except KeyError:
             category = ""
-        
+
         try:
             price = course["price"]
         except KeyError:
             price = ""
-        
+
         try:
             tags = course["properties"]
         except KeyError:
             tags = ""
-        
+
         try:
             desc_fi = course["desc_fi"]
         except KeyError:
