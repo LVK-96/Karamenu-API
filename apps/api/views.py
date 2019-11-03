@@ -10,6 +10,21 @@ from apps.menu_parser.parse_menu import parse_menu
 
 
 @api_view(['GET'])
+def RestaurantsView(request, format=None):
+    """Retrieve restaurants."""
+    if request.method == 'GET':
+        try:
+            restaurants = Restaurant.objects.all()
+        except ObjectDoesNotExist:
+            content = {'Invalid restaurant id': restaurant}
+            return Response(content, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = RestaurantSerializer(restaurants, many=True,
+                                          context={'request': request})
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
 def RestaurantView(request, restaurant, format=None):
     """Retrieve restaurants."""
     if request.method == 'GET':

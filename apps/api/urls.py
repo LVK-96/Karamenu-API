@@ -1,15 +1,14 @@
 """Urlpatterns for api app."""
 from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.generic import RedirectView
 from apps.api import views
 
 urlpatterns = [
-    path('restaurant/<int:restaurant>', views.RestaurantView),
-    path('restaurant/<int:restaurant>/', views.RestaurantView),
-    path('restaurant/<int:restaurant>/<int:day>/<int:month>/<int:year>',
+    path('restaurants', views.RestaurantsView),
+    path('restaurants/', RedirectView.as_view(url='/restaurants')),
+    path('restaurants/<int:restaurant>', views.RestaurantView),
+    path('restaurants/<int:restaurant>/', RedirectView.as_view(url='restaurants/<int:restaurant>')),
+    path('restaurants/<int:restaurant>/<int:day>/<int:month>/<int:year>',
          views.MenuView),
-    path('restaurant/<int:restaurant>/<int:day>/<int:month>/<int:year>/',
-         views.MenuView),
+    path('restaurants/<int:restaurant>/<int:day>/<int:month>/<int:year>/', RedirectView.as_view(url='restaurants/<int:restaurant/<int:day>/<int:month>/<int:year>')),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)

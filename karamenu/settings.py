@@ -25,9 +25,6 @@ SECRET_KEY = 'wx%3b)l(pomj6hm9t4s+6wn88&prosfg@kfxq(#&-gnoy7ko0$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,11 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'apps.api',
     'apps.menu_parser',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'karamenu.urls'
 
@@ -134,3 +134,6 @@ REST_FRAMEWORK = {
     'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
