@@ -23,9 +23,6 @@ def parse_menu(restaurant, d):
             return Menu.create(restaurant, d, "{}")
         menu = json.loads(fazer.get_json(restaurant.name))
         try:
-            print(delta)
-            print(menu["MenusForDays"][delta])
-            print(len(menu["MenusForDays"]))
             courses = fazer.parse_courses(
                     menu["MenusForDays"][delta]["SetMenus"])
         except KeyError:
