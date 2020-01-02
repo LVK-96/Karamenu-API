@@ -1,5 +1,4 @@
 import requests
-import apps.menu_parser.api_lookup as api_lookup
 from .course import Course
 
 
@@ -28,6 +27,7 @@ def parse_courses(courses):
         tmp = course.split(" (")
         name_fi = tmp[0]
         tags = tmp[1][:-1]  # Drop last ")" from string
+        tags = tags.replace(',', '')
         parsed_course = Course("", name_fi, "", "", "", tags, "")
         parsed_courses.append(parsed_course)
 

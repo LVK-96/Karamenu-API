@@ -1,6 +1,5 @@
 """Get menus from Sodexo api."""
 import requests
-import apps.menu_parser.api_lookup as api_lookup
 from .course import Course
 
 
@@ -43,6 +42,7 @@ def parse_courses(courses):
 
         try:
             tags = course["properties"]
+            tags = tags.replace(',', '')
         except KeyError:
             tags = ""
 

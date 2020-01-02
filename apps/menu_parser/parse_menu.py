@@ -5,7 +5,6 @@ from apps.api.models import Menu
 from .course import Course
 import apps.menu_parser.sodexo as sodexo
 import apps.menu_parser.fazer as fazer
-import apps.menu_parser.api_lookup as api_lookup
 from .serializers import CourseSerializer
 
 
@@ -23,7 +22,10 @@ def parse_menu(restaurant, d):
         delta = (d - date.today()).days
         if d < date.today() or delta > 7:
             # Fazer api only has the menus for the current week
-            return Menu.create(restaurant, d, [])
+            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
+            courses = CourseSerializer([not_available], many=True).data
+            return Menu.create(restaurant, d, courses)
+
         menu = json.loads(fazer.get_json(restaurant.api_id))
         try:
             courses = fazer.parse_courses(
