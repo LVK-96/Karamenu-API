@@ -3,13 +3,12 @@ import apps.menu_parser.api_lookup as api_lookup
 from .course import Course
 
 
-def get_json(restaurant_name):
+def get_json(api_id):
     """Get menu as json."""
-    fazer_r = api_lookup.fazer[restaurant_name]
     # TODO: Add support for English
     url = ('https://www.fazerfoodco.fi/modules/json/json/Index?costNumber={r}'
            '&language=fi')
-    url = url.format(r=fazer_r)
+    url = url.format(r=api_id)
     try:
         resp = requests.get(url)
         resp.raise_for_status()

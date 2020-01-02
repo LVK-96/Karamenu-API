@@ -4,25 +4,23 @@ import apps.menu_parser.api_lookup as api_lookup
 from .course import Course
 
 
-def get_json(restaurant_name, day):
+def get_json(api_id, day):
     """Get menu as json."""
     # restaurant_id is already validated at view.
-    sodexo_r = api_lookup.sodexo[restaurant_name]
-    url = ('https://www.sodexo.fi/ruokalistat/output'
-           '/daily_json/{r}/{y}/{m}/{d}/fi')
-    url = url.format(r=sodexo_r, y=day.year, m=day.month, d=day.day)
+    url = f"https://www.sodexo.fi/ruokalistat/output/daily_json/{api_id}/{day.year}-{day:%m}-{day:%d}"
     try:
         resp = requests.get(url)
         resp.raise_for_status()
         return resp.text
     except requests.exceptions.HTTPError:
-        return "{}"
+        return []
 
 
 def parse_courses(courses):
     parsed_courses = []
-    for course in courses:
+    for i in range(1, len(courses) + 1):
         # TODO: refactor this :D
+        course = courses[str(i)]
         try:
             name_fi = course["title_fi"]
         except KeyError:

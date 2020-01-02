@@ -13,6 +13,7 @@ class Restaurant(models.Model):
     opens = models.TimeField(blank=True)
     closes = models.TimeField(blank=True)
     url = models.URLField(blank=True, default='')
+    api_id = models.CharField(max_length=100, default='')
 
     @classmethod
     def create(cls, name, address, opens, closes, url):

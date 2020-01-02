@@ -3,12 +3,13 @@
         "model": "api.restaurant",
         "pk": 1,
         "fields": {
-           "name": "Midpoint",
-           "company": "Sodexo",
-           "address": "Karakaari 7",
-           "url": "https://www.sodexo.fi/midpoint",
+           "name": "Metropolia",
+           "company": "Fazer",
+           "address": "Karakaarenkuja 6",
+           "url": "https://www.fazerfoodco.fi/ravintolat/Ravintolat-kaupungeittain/espoo/metropolia/",
            "opens": "10:30",
-           "closes": "13:45"
+           "closes": "13:00",
+           "api_id": "3208"
         }
     },
     {
@@ -20,7 +21,8 @@
            "address": "Karaportti 3",
            "url": "https://www.sodexo.fi/nokiaone",
            "opens": "10:30",
-           "closes": "13:45"
+           "closes": "13:45",
+           "api_id": "80"
         }
     },
     {
@@ -32,7 +34,8 @@
            "address": "Karaportti 4",
            "url": "https://www.fazerfoodco.fi/ravintolat/Ravintolat-kaupungeittain/espoo/dreams-cafe/",
            "opens": "11:00",
-           "closes": "13:30"
+           "closes": "13:30",
+           "api_id": "3202"
         }
     }
 ]
