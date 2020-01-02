@@ -7,12 +7,9 @@ def get_json(api_id, day):
     """Get menu as json."""
     # restaurant_id is already validated at view.
     url = f"https://www.sodexo.fi/ruokalistat/output/daily_json/{api_id}/{day.year}-{day:%m}-{day:%d}"
-    try:
-        resp = requests.get(url)
-        resp.raise_for_status()
-        return resp.text
-    except requests.exceptions.HTTPError:
-        return []
+    resp = requests.get(url)
+    resp.raise_for_status()
+    return resp.text
 
 
 def parse_courses(courses):

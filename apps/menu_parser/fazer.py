@@ -8,12 +8,9 @@ def get_json(api_id):
     url = ('https://www.fazerfoodco.fi/modules/json/json/Index?costNumber={r}'
            '&language=fi')
     url = url.format(r=api_id)
-    try:
-        resp = requests.get(url)
-        resp.raise_for_status()
-        return resp.text
-    except requests.exceptions.HTTPError:
-        return "{}"
+    resp = requests.get(url)
+    resp.raise_for_status()
+    return resp.text
 
 
 def parse_courses(courses):

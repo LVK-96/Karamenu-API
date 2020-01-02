@@ -19,7 +19,7 @@ class RestaurantSerializerTests(TestCase):
     def test_contains_correct_fields(self):
         self.assertCountEqual(self.serializer_data.keys(),
                               ['company', 'name', 'address',
-                               'opens', 'closes', 'url'])
+                               'opens', 'closes', 'url', 'id'])
 
     def test_company_content(self):
         self.assertEqual(self.serializer_data['company'],

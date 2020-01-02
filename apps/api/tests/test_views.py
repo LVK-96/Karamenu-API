@@ -53,7 +53,7 @@ class MenuViewTests(TestCase):
     def setUp(self):
         call_command('loaddata', 'apps/api/fixtures/restaurants.json',
                      verbosity=0)
-    
+
     @patch('apps.api.views.parse_menu')
     def test_get_valid_menu_response(self, mock_parse_menu):
         restaurant = Restaurant.objects.get(pk=1)

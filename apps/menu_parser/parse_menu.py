@@ -1,5 +1,6 @@
 """Get menus from Sodexo/Fazer api and create new Menu object."""
 import json
+import requests.exceptions
 from datetime import date
 from apps.api.models import Menu
 from .course import Course
@@ -11,7 +12,12 @@ from .serializers import CourseSerializer
 def parse_menu(restaurant, d):
     """Create new menu object."""
     if restaurant.company == "Sodexo":
-        menu = json.loads(sodexo.get_json(restaurant.api_id, d))
+        try:
+            menu = json.loads(sodexo.get_json(restaurant.api_id, d))
+        except requests.exceptions.HTTPError:
+            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
+            courses = CourseSerializer([not_available], many=True).data
+            return Menu.create(restaurant, d, courses)
         try:
             courses = sodexo.parse_courses(menu["courses"])
         except TypeError:

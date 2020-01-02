@@ -13,50 +13,7 @@
             "Name": "Lounas",
             "Price": null,
             "Components": [
-              "Broileria cashewpähkinä-jogurttikastikkeessa (A ,G ,L ,VS)"
-            ]
-          },
-          {
-            "SortOrder": 0,
-            "Name": "Kasvisruoka",
-            "Price": null,
-            "Components": [
-              "Kasviskiusausta (A ,G ,L)",
-              "Kasvis-herkkusienikiusausta (* ,A ,G ,L ,VS)"
-            ]
-          },
-          {
-            "SortOrder": 0,
-            "Name": "Kasvisruoka",
-            "Price": null,
-            "Components": [
-              "Kvinoalla ja mungpavuilla täytettyjä paprikoita (* ,G ,L ,M ,Veg ,VS)",
-              "Lime-yrttimajoneesia (A ,G ,L ,M ,Veg)",
-              "Höyrytettyä riisiä (G ,L ,M ,Veg)"
-            ]
-          },
-          {
-            "SortOrder": 0,
-            "Name": "Kasvislisäke",
-            "Price": null,
-            "Components": [
-              "Parsakaalia (G ,L ,M ,Veg)"
-            ]
-          },
-          {
-            "SortOrder": 0,
-            "Name": "Kasviskeitto",
-            "Price": null,
-            "Components": [
-              "Kaali-kasviskeittoa ja papu-kikherneseosta (A ,G ,L ,M ,Veg ,VS)"
-            ]
-          },
-          {
-            "SortOrder": 0,
-            "Name": "Päivän piriste",
-            "Price": null,
-            "Components": [
-              "Mustikka-mansikkajuoma (G ,L ,M ,Veg)"
+              "testi-ruoka (A ,G ,L ,VS)"
             ]
           }
         ]

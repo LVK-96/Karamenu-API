@@ -10,7 +10,7 @@ class Course(object):
         self.desc_en = desc_en
         self.tags = tags
         self.price = price
-    
+
     def __eq__(self, other):
         """For testing sodexo.parse_courses."""
         return self.__dict__ == other.__dict__
