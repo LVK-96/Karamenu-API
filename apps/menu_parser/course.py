@@ -1,5 +1,5 @@
 class Course(object):
-    """Class used used for serialization of courses."""
+    """Class used for serialization of courses."""
 
     def __init__(self, category, name_fi, name_en,
                  desc_fi, desc_en, tags, price):
