@@ -9,38 +9,25 @@ import apps.menu_parser.fazer as fazer
 from .serializers import CourseSerializer
 
 
+class CompanyError(Exception):
+    """Raise this if company is unknown"""
+    pass
+
+
 def parse_menu(restaurant, d):
     """Create new menu object."""
-    if restaurant.company == "Sodexo":
-        try:
+    try:
+        if restaurant.company == "Sodexo":
             menu = json.loads(sodexo.get_json(restaurant.api_id, d))
-        except requests.exceptions.HTTPError:
-            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
-            courses = CourseSerializer([not_available], many=True).data
-            return Menu.create(restaurant, d, courses)
-        try:
             courses = sodexo.parse_courses(menu["courses"])
-        except TypeError:
-            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
-            courses = CourseSerializer([not_available], many=True).data
-            return Menu.create(restaurant, d, courses)
-    elif restaurant.company == "Fazer":
-        delta = (d - date.today()).days
-        if d < date.today() or delta > 7:
-            # Fazer api only has the menus for the current week
-            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
-            courses = CourseSerializer([not_available], many=True).data
-            return Menu.create(restaurant, d, courses)
-
-        menu = json.loads(fazer.get_json(restaurant.api_id))
-        try:
+        elif restaurant.company == "Fazer":
+            delta = (d - date.today()).days
+            menu = json.loads(fazer.get_json(restaurant.api_id))
             courses = fazer.parse_courses(
                     menu["MenusForDays"][delta]["SetMenus"])
-        except IndexError:
-            not_available = Course("", "Ei saatavilla", "", "", "", "", "")
-            courses = CourseSerializer([not_available], many=True).data
-            return Menu.create(restaurant, d, courses)
-    else:
+        else:
+            raise CompanyError
+    except (requests.exceptions.HTTPError, TypeError, IndexError, CompanyError):
         not_available = Course("", "Ei saatavilla", "", "", "", "", "")
         courses = [not_available]
 
