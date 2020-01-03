@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import Restaurant, Menu
+from .models import Restaurant
 from .serializers import RestaurantSerializer, MenuSerializer
 from apps.menu_parser.parse_menu import parse_menu
 
@@ -16,7 +16,7 @@ def RestaurantsView(request, format=None):
         try:
             restaurants = Restaurant.objects.all()
         except ObjectDoesNotExist:
-            content = {'Invalid restaurant id': restaurant}
+            content = {'No restaurants'}
             return Response(content, status=status.HTTP_404_NOT_FOUND)
 
         serializer = RestaurantSerializer(restaurants, many=True,
@@ -26,7 +26,7 @@ def RestaurantsView(request, format=None):
 
 @api_view(['GET'])
 def RestaurantView(request, restaurant, format=None):
-    """Retrieve restaurants."""
+    """Retrieve single restaurant."""
     if request.method == 'GET':
         try:
             restaurant = Restaurant.objects.get(pk=restaurant)

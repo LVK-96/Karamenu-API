@@ -1,5 +1,5 @@
 class Course(object):
-    """Temporary object used to store courses for serialization."""
+    """Class used used for serialization of courses."""
 
     def __init__(self, category, name_fi, name_en,
                  desc_fi, desc_en, tags, price):

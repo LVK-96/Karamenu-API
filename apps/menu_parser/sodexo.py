@@ -15,7 +15,6 @@ def get_json(api_id, day):
 def parse_courses(courses):
     parsed_courses = []
     for i in range(1, len(courses) + 1):
-        # TODO: refactor this :D
         course = courses[str(i)]
         try:
             name_fi = course["title_fi"]
